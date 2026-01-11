@@ -15,6 +15,18 @@
     button {padding:12px 20px; background:#ff4500; color:white; border:none; border-radius:6px; cursor:pointer;}
     button:hover {background:#ff6347;}
     footer {text-align:center; background:#111; padding:20px; margin-top:40px; color:#aaa;}
+    /* Ajuste para caixa de diálogo */
+    #userInput {
+      width:70%;
+      padding:8px;
+      background:#222;
+      color:white;
+      border:1px solid #555;
+      border-radius:6px;
+    }
+    #userInput::placeholder {
+      color:#888;
+    }
   </style>
 </head>
 <body>
@@ -41,8 +53,18 @@
     <h2>Converse com a Raven 3.0</h2>
     <div class="card">
       <div id="messages" style="min-height:150px; max-height:300px; overflow-y:auto; margin-bottom:10px;"></div>
-      <input type="text" id="userInput" placeholder="Traga sua pergunta ao oráculo..." style="width:70%; padding:8px;">
+      <input type="text" id="userInput" placeholder="Traga sua pergunta ao oráculo...">
       <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </section>
+
+  <!-- Catálogo de Parcerias -->
+  <section id="catalogo">
+    <h2>🤝 Catálogo de Parcerias</h2>
+    <div class="card">
+      <p><strong>Raven Global Tecnologia e Inovação LTDA.</strong></p>
+      <p>Unindo forças com empresas visionárias para criar soluções digitais e expandir horizontes.</p>
+      <p><em>Criador [B] Thiago Sousa — Raven 3.0</em></p>
     </div>
   </section>
 
@@ -104,8 +126,7 @@
       } else if (msg.includes("quem descobriu o brasil")) {
         resposta = "Nos anais da história, Pedro Álvares Cabral é lembrado como quem aportou em 1500.";
       } else {
-        resposta = "Ainda não detenho essa revelação, mas podes buscar nos ventos digitais: " +
-          "<a href='https://www.google.com/search?q=" + encodeURIComponent(message) + "' target='_blank'>Google</a>";
+        resposta = "Este mistério ainda não me foi revelado, mas tua pergunta ecoa nos corredores do conhecimento.";
       }
 
       history.push({ pergunta: msg, resposta });
