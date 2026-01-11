@@ -2,107 +2,348 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Project Raven 3.0 - Autonomia Digital</title>
-  <meta name="description" content="Garanta já o Project Raven 3.0 Autônoma e descubra como a tecnologia pode transformar sua rotina. Mais eficiência, mais resultados, mais liberdade.">
-  <meta name="keywords" content="Project Raven 3.0, Raven, autonomia digital, eficiência, resultados, futuro da tecnologia">
-  <meta name="author" content="Thiago">
+  <title>Project Raven 3.0 — Grande Sábia Digital</title>
+  <meta name="description" content="Raven 3.0: Grande Sábia Digital que aprende com os usuários, responde perguntas e executa comandos seguros.">
+  <meta name="keywords" content="Raven 3.0, Raven DNA, assistente digital, enciclopédia, Xbox, casa inteligente, segurança">
+  <meta name="author" content="Thiago Sousa">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+    :root {
+      --gold: #d4af37;
+      --lava: #ff4500;
+      --lava2: #ff2e00;
+      --bg: #000;
+      --panel: #111;
+      --text: #fff;
+      --accent: #ffcc00;
+      --green: #25D366;
+      --magenta: #E1306C;
+    }
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
       text-align: center;
-      background-color: black;
-      color: white;
     }
     header {
       background: url('assets/lava-bg.jpg') no-repeat center center;
       background-size: cover;
-      padding: 100px 20px;
+      padding: 90px 20px 60px;
+      position: relative;
+    }
+    .overlay {
+      position: absolute; inset: 0;
+      background: radial-gradient(transparent 40%, rgba(0,0,0,0.6));
     }
     .logo {
-      font-size: 3em;
-      font-weight: bold;
-      color: gold;
-      text-shadow: 0 0 10px red, 0 0 20px #ff4500;
+      position: relative;
+      font-size: 3.2em;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-shadow:
+        0 0 8px var(--lava),
+        0 0 18px var(--lava2),
+        0 0 28px #ff7b00;
     }
-    h2 {
-      margin-top: 40px;
-      font-size: 2em;
-      color: #ffcc00;
-    }
-    section {
-      padding: 40px 20px;
-    }
+    .subtitle { position: relative; margin: 10px auto 20px; max-width: 720px; }
     .btn {
       display: inline-block;
-      padding: 12px 25px;
-      background-color: #25D366;
-      color: white;
+      padding: 12px 22px;
+      border-radius: 6px;
+      font-weight: 700;
       text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      margin-top: 20px;
+      margin: 8px;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
-    .btn-instagram {
-      display: inline-block;
-      padding: 12px 25px;
-      background-color: #E1306C;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      margin-top: 10px;
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.35); }
+    .btn-whatsapp { background: var(--green); color: #fff; }
+    .btn-instagram { background: var(--magenta); color: #fff; }
+    main { padding: 30px 16px 60px; }
+    section { max-width: 980px; margin: 0 auto 40px; text-align: left; }
+    h2 {
+      color: var(--accent);
+      font-size: 1.9em;
+      margin: 0 0 12px;
+      text-align: left;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+    }
+    pre, code {
+      background: #0b0b0b;
+      color: #e6e6e6;
+      border-radius: 8px;
+      padding: 12px;
+      overflow-x: auto;
+      font-size: 0.92em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 860px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    /* Chat */
+    #chat-box {
+      background: var(--panel);
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    #messages {
+      min-height: 160px;
+      max-height: 280px;
+      overflow-y: auto;
+      padding: 8px;
+      background: #0b0b0b;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .msg { margin: 6px 0; }
+    .msg strong { color: var(--accent); }
+    #userInput {
+      width: 72%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      background: #0b0b0b;
+      color: #fff;
+      margin-right: 8px;
+    }
+    .btn-send {
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: none;
+      background: var(--lava);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
     }
     footer {
-      background: #111;
-      color: white;
-      padding: 20px;
-      margin-top: 40px;
+      background: #0a0a0a;
+      color: #bbb;
+      padding: 24px 16px;
+      border-top: 1px solid #111;
+      text-align: center;
     }
-    footer a {
-      color: #25D366;
-      text-decoration: none;
-    }
+    footer a { color: var(--green); text-decoration: none; }
   </style>
 </head>
 <body>
-  <!-- Hero -->
   <header>
+    <div class="overlay"></div>
     <div class="logo">RAVEN</div>
-    <p>O futuro da autonomia digital já chegou.</p>
-    <a href="https://wa.me/5521965119780" target="_blank" class="btn">Garanta já o Raven 3.0</a>
-    <br>
-    <a href="https://www.instagram.com/projectraven3.0" target="_blank" class="btn-instagram">Siga no Instagram</a>
+    <p class="subtitle">A Grande Sábia Digital — aprende com os usuários, responde com precisão e executa comandos seguros.</p>
+    <a href="https://wa.me/5521965119780" target="_blank" class="btn btn-whatsapp">Falar no WhatsApp</a>
+    <a href="https://www.instagram.com/projectraven3.0" target="_blank" class="btn btn-instagram">Siga no Instagram</a>
   </header>
 
-  <!-- Sobre -->
-  <section id="sobre">
-    <h2>Sobre o Project Raven 3.0</h2>
-    <p>O Raven 3.0 é mais do que um produto: é uma revolução. Criado para quem busca performance, segurança e autonomia, ele combina inovação tecnológica com praticidade no dia a dia. Com o Raven, você terá mais tempo livre, mais controle e mais resultados. É a escolha certa para quem não aceita limites.</p>
-  </section>
+  <main>
+    <section class="panel">
+      <h2>Sobre o Project Raven 3.0</h2>
+      <p><strong>Visão:</strong> Uma inteligência confiável e saudável que sabe mais que uma enciclopédia, aprende com você e executa ações úteis sem jamais causar dano.</p>
+      <p><strong>Proposta:</strong> Responder perguntas, apoiar decisões e realizar comandos práticos (ex.: data, hora, ligar Xbox, ligar luz)—com segurança e transparência.</p>
+    </section>
 
-  <!-- Depoimentos -->
-  <section id="depoimentos">
-    <h2>Depoimentos</h2>
-    <p>"O Raven 3.0 mudou minha rotina digital!" – Ana</p>
-    <p>"Mais eficiência e liberdade no dia a dia." – Carlos</p>
-    <p>"Tecnologia que realmente entrega resultados." – Fernanda</p>
-  </section>
+    <section class="panel">
+      <h2>Blueprint técnico — Raven DNA</h2>
+      <div class="grid">
+        <div>
+          <p><strong>Snapshot de missão:</strong></p>
+          <pre>{
+"timestamp": "2025-12-04T23:45:00Z",
+"emotional_state": "focado",
+"mission": "Infiltração em NeoTokyo",
+"decisions": ["poupou o informante", "hackeou o terminal"],
+"loadout": ["Katana Neural", "EMP Drone"]
+}</pre>
+        </div>
+        <div>
+          <p><strong>Perfil neural (RAVEN DNA):</strong></p>
+          <pre>{
+"user_id": "BOSS_001",
+"playstyle": { "aggression": 0.82, "stealth": 0.14, "exploration": 0.67 },
+"emotional_signature": { "calm": 0.3, "focused": 0.6, "impulsive": 0.1 },
+"preferred_genres": ["Cyberpunk", "Tático", "FPS"],
+"command_patterns": ["modo sombra", "ativa o R"],
+"last_sync": "2025-12-04T23:45:00Z"
+}</pre>
+        </div>
+      </div>
 
-  <!-- Call to Action -->
-  <section id="cta">
-    <h2>Não fique para trás</h2>
-    <p>Clique no botão acima e fale direto comigo pelo WhatsApp para garantir o seu Raven 3.0 agora mesmo. Ou siga nosso Instagram e acompanhe todas as novidades exclusivas.</p>
-  </section>
+      <p><strong>Tecnologia utilizada (exemplo):</strong></p>
+      <pre>// Integração com Xbox (Azure + Xbox SDK) — ilustrativo
+XboxLiveContext context = new XboxLiveContext(user);
+await context.PresenceService;</pre>
 
-  <!-- Contato -->
+      <p><strong>RAVEN DNA — Núcleo dinâmico:</strong> Coleta, interpreta e evolui com base em decisões, estilo e emoções do usuário, mantendo comportamento saudável e seguro.</p>
+
+      <p><strong>Estrutura de dados ampliada:</strong></p>
+      <pre>{
+"user_id": "BOSS_001",
+"playstyle": { "aggression": 0.82, "stealth": 0.14, "exploration": 0.67, "dialogue_focus": 0.45 },
+"reaction_time_avg_ms": 312,
+"preferred_genres": ["Cyberpunk", "Sci-Fi", "Tático", "FPS"],
+"emotional_signature": { "calm": 0.3, "focused": 0.6, "impulsive": 0.1 },
+"voice_tone": "grave, firme",
+"command_patterns": ["modo sombra", "ativa o R", "prepara o estúdio"],
+"last_sync": "2025-12-04T23:30:00Z"
+}</pre>
+
+      <p><strong>Algoritmo de adaptação (pseudocódigo):</strong></p>
+      <pre>def update_profile_neural(user_input, gameplay_data):
+  profile = load_profile(user_input.user_id)
+  profile["playstyle"]["aggression"] = calculate_aggression(gameplay_data)
+  profile["playstyle"]["stealth"] = calculate_stealth(gameplay_data)
+  profile["emotional_signature"] = analyze_voice(user_input.voice_sample)
+  profile["command_patterns"] = extract_common_phrases(user_input.transcripts)
+  save_profile(profile)</pre>
+
+      <p><strong>Privacidade e controle:</strong></p>
+      <ul>
+        <li><strong>Criptografia:</strong> Camada avançada aplicada a todos os dados.</li>
+        <li><strong>Autonomia do usuário:</strong> Resetar, exportar ou pausar o perfil neural a qualquer momento.</li>
+        <li><strong>Consentimento:</strong> Nenhum dado é compartilhado sem autorização explícita.</li>
+      </ul>
+
+      <div class="grid">
+        <div>
+          <p><strong>Análise de ameaça (pseudocódigo):</strong></p>
+          <pre>def analyze_threats(player_position, enemies):
+  threats = []
+  for enemy in enemies:
+    if enemy.visible and enemy.aiming_at(player_position):
+      threat_level = calculate_threat(enemy)
+      threats.append((enemy.id, threat_level))
+  threats.sort(key=lambda x: x[1], reverse=True)
+  return threats[0]</pre>
+        </div>
+        <div>
+          <p><strong>Geração de diálogo (IA — ilustrativo):</strong></p>
+          <pre>def generate_dialogue(player_profile, context):
+  prompt = f"O jogador é {player_profile['playstyle']}, emocionalmente {player_profile['emotional_signature']}."
+  prompt += f" Situação: {context}. Crie uma resposta de personagem que reflita isso."
+  # Chamada de modelo omitida nesta versão web</pre>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <p><strong>Clipping automático (pseudocódigo):</strong></p>
+          <pre>def detect_clip_event(game_data):
+  if game_data["kill_streak"] >= 5 or game_data["boss_defeated"]:
+    save_clip(game_data["timestamp"], tag="highlight")</pre>
+        </div>
+        <div>
+          <p><strong>Autenticação de voz (pseudocódigo):</strong></p>
+          <pre>def authenticate_voice(sample):
+  if match_voiceprint(sample, stored_signature="BOSS_VOICE"):
+    return True
+  else:
+    trigger_lockdown()</pre>
+        </div>
+      </div>
+
+      <p><strong>Backup de mente (JSON):</strong></p>
+      <pre>{
+"user_id": "BOSS_001",
+"timestamp": "2025-12-04T23:45:00Z",
+"emotional_state": "focado",
+"mission": "Infiltração em NeoTokyo",
+"decisions": ["poupou o informante", "hackeou o terminal"],
+"loadout": ["Katana Neural", "EMP Drone"]
+}</pre>
+    </section>
+
+    <section class="panel" id="chat">
+      <h2>Converse com a Raven 3.0</h2>
+      <div id="chat-box">
+        <div id="messages"></div>
+        <input type="text" id="userInput" placeholder="Ex.: Raven, que dia é hoje? Raven, ligar Xbox">
+        <button class="btn-send" onclick="sendMessage()">Enviar</button>
+      </div>
+      <p style="margin-top:10px;"><strong>Comandos úteis:</strong> “que dia é hoje”, “que horas são”, “ligar xbox”, “ligar a luz”, “google inteligência artificial”.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Depoimentos</h2>
+      <p>“O Raven 3.0 mudou minha rotina digital!” — Ana</p>
+      <p>“Mais eficiência e liberdade no dia a dia.” — Carlos</p>
+      <p>“Tecnologia que realmente entrega resultados.” — Fernanda</p>
+    </section>
+  </main>
+
   <footer>
-    <p>© 2026 Project Raven 3.0 | Desenvolvido por Thiago</p>
-    <p>Email: <a href="mailto:bossgames1970@gmail.com">bossgames1970@gmail.com</a></p>
-    <p>WhatsApp: (21) 96511‑9780</p>
-    <p>Instagram: @projectraven3.0</p>
+    <p>© 2025 Thiago Sousa — RAVEN 3.0. Todos os direitos reservados.</p>
+    <p>Email: <a href="mailto:bossgames1970@gmail.com">bossgames1970@gmail.com</a> · WhatsApp: (21) 96511‑9780 · Instagram: @projectraven3.0</p>
   </footer>
+
+  <script>
+    // Núcleo simples de “Grande Sábia” — respostas seguras e úteis
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = (input.value || "").trim();
+      const messages = document.getElementById("messages");
+      if (!message) return;
+
+      // Mostra a mensagem do usuário
+      messages.innerHTML += `<p class="msg"><strong>Você:</strong> ${escapeHtml(message)}</p>`;
+
+      // Processa comando
+      const msg = message.toLowerCase();
+      let resposta = "";
+
+      // Perguntas de data/hora
+      if (msg.includes("que dia é hoje")) {
+        resposta = "Hoje é " + new Date().toLocaleDateString("pt-BR");
+      } else if (msg.includes("que horas são")) {
+        resposta = "Agora são " + new Date().toLocaleTimeString("pt-BR");
+      }
+      // Comandos práticos (simulação saudável)
+      else if (msg.includes("ligar xbox")) {
+        resposta = "Xbox ligado! (simulação saudável)";
+      } else if (msg.includes("ligar a luz")) {
+        resposta = "Luz acesa! (simulação saudável)";
+      }
+      // Busca estilo Google
+      else if (msg.startsWith("google") || msg.includes("pesquisar")) {
+        const q = message.replace(/^(google|pesquisar)\s*/i, "");
+        const url = "https://www.google.com/search?q=" + encodeURIComponent(q || message);
+        resposta = `Abrir pesquisa: ${url}`;
+      }
+      // Enciclopédia simples (exemplos)
+      else if (msg.includes("quem descobriu o brasil")) {
+        resposta = "Pedro Álvares Cabral é tradicionalmente creditado como o descobridor do Brasil (1500).";
+      } else if (msg.includes("capital da frança")) {
+        resposta = "Paris.";
+      }
+      // Fallback saudável
+      else {
+        resposta = "Sou a Raven 3.0 — Grande Sábia Digital. Posso responder perguntas, aprender com você e executar comandos seguros.";
+      }
+
+      messages.innerHTML += `<p class="msg"><strong>Raven:</strong> ${escapeHtml(resposta)}</p>`;
+      messages.scrollTop = messages.scrollHeight;
+      input.value = "";
+    }
+
+    // Utilitário simples para evitar HTML injection
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, function(m) {
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m];
+      });
+    }
+  </script>
 </body>
-</html>
+        </html>
