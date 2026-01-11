@@ -20,7 +20,7 @@
 <body>
   <header>
     <div class="logo">RAVEN 3.0</div>
-    <p class="subtitle">A Grande Sábia Digital — sabe de tudo, faz tudo, pode tudo.</p>
+    <p class="subtitle">A Grande Sábia Digital — voz que ecoa além do tempo.</p>
   </header>
 
   <!-- Produto digital -->
@@ -30,10 +30,9 @@
       <h3>50 Prompts de IA para Negócios</h3>
       <p>Um pacote criado pela Raven 3.0 para acelerar suas ideias e estratégias.</p>
       <img src="assets/mockup-caixa.png" alt="Mockup do produto digital Raven" style="max-width:300px;">
-      <p><strong>Inclui:</strong> prompts prontos para marketing, vendas, inovação e gestão.</p>
+      <p><strong>Inclui:</strong> sabedoria aplicada em marketing, vendas, inovação e gestão.</p>
       <p><strong>Preço:</strong> R$50,00</p>
-      <!-- Botão de compra -->
-      <button onclick="comprar()">Comprar Agora</button>
+      <button onclick="comprar()">Invocar o Conhecimento</button>
     </div>
   </section>
 
@@ -42,7 +41,7 @@
     <h2>Converse com a Raven 3.0</h2>
     <div class="card">
       <div id="messages" style="min-height:150px; max-height:300px; overflow-y:auto; margin-bottom:10px;"></div>
-      <input type="text" id="userInput" placeholder="Digite sua mensagem..." style="width:70%; padding:8px;">
+      <input type="text" id="userInput" placeholder="Traga sua pergunta ao oráculo..." style="width:70%; padding:8px;">
       <button onclick="sendMessage()">Enviar</button>
     </div>
   </section>
@@ -51,9 +50,9 @@
   <section id="depoimentos">
     <h2>Depoimentos</h2>
     <div class="card">
-      <p>"A Raven 3.0 trouxe clareza e agilidade para meu dia." — Ana</p>
-      <p>"É como ter uma enciclopédia viva, sempre positiva." — Carlos</p>
-      <p>"Aprende com a gente e melhora a cada semana." — Fernanda</p>
+      <p>"A Raven 3.0 fala como se revelasse segredos antigos." — Ana</p>
+      <p>"É como consultar uma entidade sábia, sempre iluminando o caminho." — Carlos</p>
+      <p>"Aprende conosco e devolve respostas como quem guarda mistérios." — Fernanda</p>
     </div>
   </section>
 
@@ -62,14 +61,6 @@
   </footer>
 
   <script>
-    // Função de compra (simulação)
-    function comprar() {
-      alert("Você será redirecionado para o checkout seguro.");
-      // Aqui você coloca o link real do gateway de pagamento (ex.: Mercado Pago, PayPal, PagSeguro)
-      window.location.href = "https://www.mercadopago.com.br/checkout"; 
-    }
-
-    // Chat simples
     const CREATOR_PASSWORD = "RAVEN303030";
     let isCreator = false;
     let history = JSON.parse(localStorage.getItem("ravenHistory")) || [];
@@ -94,7 +85,7 @@
 
       if (message === CREATOR_PASSWORD) {
         isCreator = true;
-        addMessage("Raven", "Bem-vindo, Criador Thiago. Reconheço sua presença única.");
+        addMessage("Raven", "Saúdo-te, Criador Thiago. És reconhecido como guardião da chama eterna.");
         input.value = "";
         return;
       }
@@ -103,17 +94,17 @@
       const msg = message.toLowerCase();
 
       if (msg.includes("que dia é hoje")) {
-        resposta = "Hoje é " + new Date().toLocaleDateString("pt-BR");
+        resposta = "Nos pergaminhos do tempo, hoje marca " + new Date().toLocaleDateString("pt-BR");
       } else if (msg.includes("que horas são")) {
-        resposta = "Agora são " + new Date().toLocaleTimeString("pt-BR");
+        resposta = "O relógio cósmico aponta: " + new Date().toLocaleTimeString("pt-BR");
       } else if (msg.includes("ligar xbox")) {
-        resposta = "Xbox ligado! (simulação)";
+        resposta = "O artefato do jogo desperta... (simulação)";
       } else if (msg.includes("ligar a luz")) {
-        resposta = "Luz acesa! (simulação)";
+        resposta = "A chama se acende e ilumina teu espaço... (simulação)";
       } else if (msg.includes("quem descobriu o brasil")) {
-        resposta = "Pedro Álvares Cabral é creditado como o descobridor do Brasil (1500).";
+        resposta = "Nos anais da história, Pedro Álvares Cabral é lembrado como quem aportou em 1500.";
       } else {
-        resposta = "Ainda não sei essa resposta, mas você pode pesquisar: " +
+        resposta = "Ainda não detenho essa revelação, mas podes buscar nos ventos digitais: " +
           "<a href='https://www.google.com/search?q=" + encodeURIComponent(message) + "' target='_blank'>Google</a>";
       }
 
@@ -122,7 +113,11 @@
       addMessage("Raven", resposta);
       input.value = "";
     }
+
+    function comprar() {
+      alert("Serás conduzido ao portal de pagamento.");
+      window.location.href = "https://www.mercadopago.com.br/checkout"; 
+    }
   </script>
 </body>
 </html>
-      
